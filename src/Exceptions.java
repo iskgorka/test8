@@ -121,19 +121,19 @@ Exception example 8
             public static void main(String[] args) {
                 try {
                     int a = args.length;
-        //Если не указаны аргументы командной строки
-        //в следующем операторе будет сгенерировано
-        //исключение в связи с делением на ноль.
+                    //Если не указаны аргументы командной строки
+                    //в следующем операторе будет сгенерировано
+                    //исключение в связи с делением на ноль.
                     int b = 42 / a;
                     System.out.println("a: " + a);
                     try { // вложенный блок try
-        //Если указан один аргумент командной строки,
-        //то исключени в связи с делением на ноль
-        //будет сгенерировано в следующем коде.
+                        //Если указан один аргумент командной строки,
+                        //то исключение в связи с делением на ноль
+                        //будет сгенерировано в следующем коде.
                         if(a == 1) a = a / (a-a); //деление на 0
-        //Если указаны два аргумента командной строки,
-        //то генерируется исключение в связи с выходом
-        //за пределы массива
+                        //Если указаны два аргумента командной строки,
+                        //то генерируется исключение в связи с выходом
+                        //за пределы массива
                         if(a == 2) {
                             int[] c = {1};
                             c[42] = 99;//здесь генерируется исключение в связи с выходом за пределы массива
@@ -180,7 +180,7 @@ Exception example 10
                 try {
                     throw new NullPointerException("Демонстрация");
                 } catch (NullPointerException e) {
-                    System.out.println("Исключение перехвачено в теле метода demoproc().");
+                    System.out.println("Исключение перехвачено в теле метода demoproc() " + e);
                     throw e; //повторно сгенерировать исключение
                 }
             }
@@ -227,7 +227,7 @@ Exception example 12
 Exception example 13
         //Применение оператора finally
         class FinallyDemo {
-        //сгенерировать исключение в методе
+            //сгенерировать исключение в методе
             static void procA() {
                 try {
                     System.out.println("В теле метода procA()");
@@ -240,7 +240,7 @@ Exception example 13
             static void procB() {
                 try {
                     System.out.println("В теле метода procB()");
-                    return;
+                    return; //выйти из метода
                 } finally {
                     System.out.println("Блок оператора finally в методе procB()");
                 }
@@ -258,7 +258,7 @@ Exception example 13
                 try {
                     procA();
                 } catch (Exception e) {
-                    System.out.println("Исключение перехвачено" + e);
+                    System.out.println("Исключение перехвачено " + e);
                 }
                 procB();
                 procC();
@@ -279,8 +279,9 @@ Exception example 14
         class ExceptionDemo {
             static void compute(int a) throws MyException {
                 System.out.println("Вызван метод compute (" + a + ")");
-                if (a > 10)
+                if (a > 10) {
                     throw new MyException(a);
+                }
                 System.out.println("Нормальное завершение");
             }
 
