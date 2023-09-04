@@ -233,7 +233,7 @@ Exception example 13
                     System.out.println("В теле метода procA()");
                     throw new RuntimeException("демонстрация");
                 } finally {
-                    System.out.println("Блок оператора finally в методе procA()");
+                    System.out.println("Блок оператора finally в методе procA()"); //сначала выполнится finally потом демонстрация
                 }
             }
             //возвратить управление из блока оператора try
